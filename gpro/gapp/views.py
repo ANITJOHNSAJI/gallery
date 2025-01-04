@@ -39,24 +39,20 @@ def logout_user(request):
     logout(request)
     return redirect(login_user)
 
-def index(request):
-        if request.authenticated:
-            feeds=Gallery.objects.filter(User=request.user).order_by('-id')
-            return render(request,"index.html",{"feeds":feeds})
-        return render("signup")
-        
-        if request.method == 'POST' and 'image' in request.FILES:
-            myimage=request.FILES['image']
-            obj=Gallery(feedimage=myimage)
-            obj.save()
-            return redirect('index')
-    
-        
-            
-        gallery_images=Gallery.objects.all()
-        return render(request,"index.html", {"gallery_images":gallery_images})
+def index(request):    
+    if request.method == 'POST' and 'image' in request.FILES:
+        myimage=request.FILES['image']
+        obj=Gallery(feedimage=myimage)
+        obj.save()
+        return redirect('add_image')
+          
+    gallery_images=Gallery.objects.all()
+    return render(request,"add.html", {"gallery_images":gallery_images})
     
 def delete_g(request,id):
       feeds=Gallery.objects.filter(pk=id)
       feeds.delete()
       return redirect(index)
+
+def add(request):
+    return render(request,"add.html")

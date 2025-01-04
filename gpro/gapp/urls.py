@@ -10,7 +10,8 @@ urlpatterns = [
     path('signin',views.signup,name='signin'),
     path('welcome',views.main,name='main'),
     path('logout',views.logout_user,name='logout'),
-    path('add',views.index,name='index'),
+    path('add',views.add,name='add'),
+    path('add_image',views.index,name='add_image'),
     path('deletion/<int:id>', views.delete_g,name='deletion'),
 ]
 if settings.DEBUG:
