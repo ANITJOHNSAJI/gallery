@@ -13,6 +13,7 @@ urlpatterns = [
     path('add',views.add,name='add'),
     path('add_image',views.index,name='add_image'),
     path('deletion/<int:id>', views.delete_g,name='deletion'),
+    path('register',views.register,name='register')
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

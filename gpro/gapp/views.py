@@ -7,7 +7,8 @@ from.models import Gallery
 
 # Create your views here.
 def main(request):
-    return render(request,'index.html')
+    gallery_images=Gallery.objects.all()
+    return render(request,'index.html',{"gallery_images":gallery_images})
 
 def login_user(request):
     if request.POST:
@@ -42,12 +43,12 @@ def logout_user(request):
 def index(request):    
     if request.method == 'POST' and 'image' in request.FILES:
         myimage=request.FILES['image']
-        obj=Gallery(feedimage=myimage)
+        obj=Gallery(feedimage=myimage,user=request.user)
         obj.save()
         return redirect('add_image')
           
-    gallery_images=Gallery.objects.all()
-    return render(request,"add.html", {"gallery_images":gallery_images})
+    
+    return render(request,"add.html")
     
 def delete_g(request,id):
       feeds=Gallery.objects.filter(pk=id)
@@ -56,3 +57,6 @@ def delete_g(request,id):
 
 def add(request):
     return render(request,"add.html")
+
+def register(request):
+    return render(request,"register.html")

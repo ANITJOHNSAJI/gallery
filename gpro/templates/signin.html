@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+
     <div>
         <form action="" method="post">
             {% csrf_token %}
@@ -18,6 +19,11 @@
             {% endfor %}
             {% endif %}
         </form>
+       
+    </div>
+    <br>
+    <div>
+        <a href="{% url 'register' %}"><button>register page</button></a>
     </div>
     
 </body>
