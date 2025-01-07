@@ -1,3 +1,13 @@
 h1{
     background-color: aquamarine;
 }
+h2{
+    background-color: aquamarine;
+}
+.main{
+    background-color: aqua;
+    padding: 5px;
+    width: 400px;
+    margin-left: 100px;
+    margin-top: 100px;
+}

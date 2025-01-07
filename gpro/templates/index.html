@@ -2,24 +2,25 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-    <h1>WELCOME TO ALL</h1>
-    <a href="{% url 'add' %}"><button>image</button></a>
-    <a href="{% url 'logout' %}"><button>log out</button></a>
-    <div>
-        {% for i in gallery_images %}
-        <div><img src="{{ i.feedimage.url}}" alt="Gallery Image" width="300">
-            <a href="{% url 'deletion' i.id %}"><button>delete</button></a>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <h1>WELCOME TO ALL</h1>
+        <h2>MY IMAGES</h2>
+        <a href="{% url 'add' %}"><button>image</button></a>
+        <a href="{% url 'logout' %}"><button>log out</button></a>
+        <div class="main" >
+            {% for i in gallery_images %}
+            <div><img src="{{ i.feedimage.url}}" alt="Gallery Image"
+                    width="300">
+                <a href="{% url 'deletion' i.id %}"><button>delete</button></a>
             </div>
             {% endfor %}
-        
-        
+
         </div>
-</body>
+    </body>
 </html>
