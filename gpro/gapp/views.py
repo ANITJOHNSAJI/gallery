@@ -62,5 +62,6 @@ def delete_g(request,id):
 def add(request):
     return render(request,"add.html")
 
+
 def register(request):
     return render(request,"register.html")
