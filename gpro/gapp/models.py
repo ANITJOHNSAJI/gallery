@@ -5,3 +5,5 @@ from django.contrib.auth.models import User
 class Gallery(models.Model):
     feedimage=models.ImageField(upload_to='images/')
     user=models.ForeignKey(User,on_delete=models.CASCADE)
+
+ 
