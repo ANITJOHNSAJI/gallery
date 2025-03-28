@@ -1,6 +1,10 @@
-/* styles.css */
+/* General Reset and Body Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* Basic reset for body */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,26 +14,36 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
 }
 
-/* Style for the form container */
+/* Centered form styling */
 div {
     background-color: #fff;
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 350px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
     text-align: center;
+    animation: fadeIn 1s ease-in-out;
 }
 
-/* Form styling */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-/* Input field styling */
+/* Input Fields */
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -38,9 +52,17 @@ input[type="password"] {
     border-radius: 5px;
     font-size: 16px;
     width: 100%;
+    transition: border-color 0.3s ease;
 }
 
-/* Submit button styling */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Submit Button Styling */
 input[type="submit"] {
     padding: 12px;
     background-color: #4CAF50;
@@ -49,22 +71,90 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s;
 }
 
 input[type="submit"]:hover {
     background-color: #45a049;
+    transform: scale(1.05);
 }
 
-/* Error message styling */
+/* Button Styling for Login link */
+button {
+    padding: 12px 20px;
+    background-color: #34a469;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00b336;
+}
+
+/* Error Messages Styling */
 p {
     color: red;
     font-size: 14px;
     margin: 0;
-    text-align: center;
+    animation: fadeIn 1s ease-in-out;
 }
 
-/* Message container */
-.messages {
-    margin-top: 10px;
-    text-align: center;
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    div {
+        padding: 15px;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"],
+    button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="submit"],
+    button {
+        font-size: 12px;
+    }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

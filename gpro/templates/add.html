@@ -4,32 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gallery</title>
     <link rel="stylesheet" href="{% static 'css/add.css' %}">
 </head>
 <body>
+    <h2>Gallery</h2>
+
+    <nav>
+        <a href="{% url 'logout' %}"><button>Log Out</button></a>
+        <a href="{% url 'main' %}"><button>Home</button></a><br>
+    </nav>
+
+    <!-- Image Upload Form -->
     <form enctype="multipart/form-data" action="{% url 'add_image' %}" method="post">
         {% csrf_token %}
         <label for="image">Upload Image:</label>
-        <input type="file" name="image">
-        <button type="submit">submit</button>
+        <input type="file" name="image" required>
+        <button type="submit">Submit</button>
     </form>
-<h2>Gallery</h2>
-<a href="{% url 'logout' %}"><button>log out</button></a>
-<div>
-    {% for i in gallery_images %}
-    {% if i.feedimage %}
-    {% else %}
-    <p>No image for this gallery item</p>
-    {% endif %}
-    {% empty %}
-    <p>No images uploaded yet.</p>
-    {% endfor %}
 
-
-</div>
-
-
+    <!-- Gallery Display -->
+    <div>
+        {% if gallery_images %}
+            {% for i in gallery_images %}
+                {% if i.feedimage %}
+                    <div class="gallery-item">
+                        <img src="{{ i.feedimage.url }}" alt="Gallery Image" style="max-width: 100%; height: auto;">
+                    </div>
+                {% else %}
+                    <p>No image available for this gallery item.</p>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>No images uploaded yet.</p>
+        {% endif %}
+    </div>
     
 </body>
 </html>
